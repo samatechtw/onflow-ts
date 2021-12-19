@@ -1,0 +1,41 @@
+{
+  "name": "@samatech/onflow-ts",
+  "version": "0.4.6",
+  "description": "TypeScript test and dApp utils for the Flow blockchain.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config=jest.config.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samatechtw/onflow-ts.git"
+  },
+  "keywords": [
+    "onflow",
+    "typescript",
+    "testing"
+  ],
+  "author": "Sam Pullman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samatechtw/onflow-ts/issues"
+  },
+  "homepage": "https://github.com/samatechtw/onflow-ts#readme",
+  "dependencies": {
+    "@samatech/onflow-fcl-esm": "^0.4.6"
+  },
+  "devDependencies": {
+    "@onflow/config": "^0.0.2",
+    "@types/jest": "^27.0.3",
+    "google-protobuf": "^3.19.1",
+    "jest": "^27.4.5",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
+  }
+}
