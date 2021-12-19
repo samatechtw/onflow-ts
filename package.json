@@ -1,6 +1,6 @@
 {
   "name": "@samatech/onflow-ts",
-  "version": "0.4.6",
+  "version": "0.1.0",
   "description": "TypeScript test and dApp utils for the Flow blockchain.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
