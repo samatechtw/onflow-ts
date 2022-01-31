@@ -1,4 +1,4 @@
-import { ContractMap } from './code';
+import { ContractMap } from '../type/contract-map'
 
 /**
  * Address map with access by name for contracts deployed by default.
@@ -9,21 +9,21 @@ export const defaultsByName: ContractMap = {
   FungibleToken: '0xee82856bf20e2aa6',
   FlowFees: '0xe5a8b7f23e8b548f',
   FlowStorageFees: '0xf8d6e0586b0a20c7',
-};
+}
 
-const contractsMap: ContractMap = {};
+const contractsMap: ContractMap = {}
 
 export const setContractAddress = (name: string, address: string): void => {
-  contractsMap[name] = address;
-};
+  contractsMap[name] = address
+}
 
 export const getAddressMap = (): ContractMap => {
   return {
     ...defaultsByName,
     ...contractsMap,
-  };
-};
+  }
+}
 
 export const getContractAddress = (key: string): string | undefined => {
-  return getAddressMap()[key];
-};
+  return getAddressMap()[key]
+}

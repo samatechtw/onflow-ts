@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "jest --config=jest.config.json"
+    "test": "jest --config=jest.config.ts"
   },
   "repository": {
     "type": "git",
@@ -27,15 +27,18 @@
   },
   "homepage": "https://github.com/samatechtw/onflow-ts#readme",
   "dependencies": {
-    "@samatech/onflow-fcl-esm": "^0.4.6"
+    "@samatech/onflow-fcl-esm": "^0.5.4",
+    "elliptic": "^6.5.4"
   },
   "devDependencies": {
     "@onflow/config": "^0.0.2",
+    "@types/elliptic": "^6.4.14",
     "@types/jest": "^27.0.3",
     "google-protobuf": "^3.19.1",
     "jest": "^27.4.5",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.2",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   }
 }
