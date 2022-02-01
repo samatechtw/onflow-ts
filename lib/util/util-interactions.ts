@@ -12,7 +12,7 @@ import {
   defaultsByName,
   getContractAddress,
 } from './config'
-import { withPrefix } from './util-flow'
+import { withPrefix } from './misc'
 
 import { InteractionType } from '../type/enum-interaction-type'
 import { ContractMap } from '../type/contract-map'
