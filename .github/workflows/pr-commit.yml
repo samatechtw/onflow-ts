@@ -1,0 +1,93 @@
+name: PR Commit
+on:
+  pull_request:
+    branches: [main]
+env:
+  WORKSPACE_ROOT: .
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code into workspace directory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.29.1
+      - name: Set up NodeJS v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+      - name: Install npm modules
+        run: pnpm install
+      - name: Lint source code
+        run: npm run lint
+      - name: Lint commits
+        run: npx commitlint --verbose --from=origin/main
+
+  check-format:
+    name: Check Format
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code into workspace directory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.29.1
+      - name: Set up NodeJS v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+      - name: Install npm modules
+        run: pnpm install
+      - name: Check code format
+        run: npm run format:check
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code into workspace directory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.29.1
+      - name: Set up NodeJS v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+      - name: Install npm modules
+        run: pnpm install
+      - name: Run unit tests
+        run: npm run test
+
+  build:
+    name: Build library
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code into workspace directory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.29.1
+      - name: Set up NodeJS v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+      - name: Install npm modules
+        run: pnpm install
+      - name: Build library
+        run: npm run build

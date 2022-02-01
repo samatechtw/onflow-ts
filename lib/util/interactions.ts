@@ -58,10 +58,10 @@ export const replaceImportAddresses = async (code: string): Promise<string> => {
  * Submits transaction to emulator network and waits before it will be sealed.
  * Returns transaction result.
  * @param {string} [props.name] - Name of Cadence template file
- * @param {{string:string}} [props.addressMap={}] - name/address map to use as lookup table for addresses in import statements.
+ * @param {{string:string}} [props.addressMap] - name/address lookup table for addresses in imports
  * @param {string} [props.code] - Cadence code of the transaction.
- * @param {[any]} props.args - array of arguments specified as tupple, where last value is the type of preceding values.
- * @param {[string]} [props.signers] - list of signers, who will authorize transaction, specified as array of addresses.
+ * @param {[any]} props.args - argument tuple. the last value is the type of preceding values.
+ * @param {[string]} [props.signers] - array of signer addresses to authorize transaction.
  */
 export const sendTransaction = async (
   props: IInteractionProps,
@@ -222,7 +222,7 @@ export const deployContract = async (props: DeployProps) => {
 
   let deployArgs: fcl.Argument[] = [fcl.arg(name, t.String), fcl.arg(hexedCode, t.String)]
 
-  // We don't really care about the names of the arguments, but we need unique one for each one of them
+  // We don't really care about arg names, but each must be unique
   const argLetter = 'abcdefghijklmnopqrstuvwxyz'
   if (args) {
     deployArgs = deployArgs.concat(args)

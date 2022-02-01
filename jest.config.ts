@@ -11,4 +11,4 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js'],
   testMatch: ['**/lib/**/+(*.)+(spec).+(ts)'],
-};
+}

@@ -43,7 +43,6 @@ test.sh
 
 # Lock files
 yarn.lock
-pnpm-lock.yaml
 .pnpm-debug.log
 package-lock.json
 
