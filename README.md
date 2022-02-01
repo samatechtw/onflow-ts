@@ -22,6 +22,42 @@ Coming soon...
 
 ### Development
 
+#### Install packages with [PNPM](https://pnpm.io/installation)
+
+```bash
+pnpm install
+```
+
+#### Build
+
+```bash
+# tsc
+npm run build
+```
+
+#### Test
+
+```bash
+# Jest
+npm run test
+```
+
+#### Lint
+
+```bash
+# ESlint
+npm run lint
+```
+
+#### Format
+
+```bash
+# Use Prettier to format files
+npm run format
+# Just check the formatting (used in CI)
+npm run format:check
+```
+
 #### Release
 
 Currently, a custom release script is used to update the version and publish to NPM. This must be executed on the main branch, and `<version>` must not equal the current version on NPM.
