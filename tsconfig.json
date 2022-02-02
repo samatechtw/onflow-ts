@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "exclude": ["node_modules", "dist", "test"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts", "jest.config.*"],
   "references": [
     {
       "path": "./tsconfig.spec.json"
