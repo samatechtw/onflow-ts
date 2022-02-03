@@ -1,5 +1,6 @@
 export * from './type/contract-map'
 export * from './type/enum-interaction-type'
+export * from './type/i-deploy-props'
 export * from './type/i-fcl-wallet'
 export * from './type/i-flow-account'
 export * from './type/i-interaction'

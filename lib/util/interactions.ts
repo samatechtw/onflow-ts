@@ -16,7 +16,7 @@ import { withPrefix } from './misc'
 
 import { InteractionType } from '../type/enum-interaction-type'
 import { ContractMap } from '../type/contract-map'
-import { IFlowAccount } from '../type/i-flow-account'
+import { IDeployProps } from '../type/i-deploy-props'
 import { IInteraction } from '../type/i-interaction'
 import { ITransactProps } from '../type/i-transact-props'
 import { IInteractionProps } from '../type/i-interaction-props'
@@ -191,20 +191,12 @@ export const execute = async (name: string, args?: fcl.Argument[]): Promise<any>
   return executeScript({ args, code })
 }
 
-export interface DeployProps {
-  auth: IFlowAccount
-  name: string
-  to?: string
-  args?: fcl.Argument[]
-  update?: boolean
-}
-
 /**
  * Deploys contract as Cadence code to specified account
  * Returns transaction result.
  * @param props - Deploy properties
  */
-export const deployContract = async (props: DeployProps) => {
+export const deployContract = async (props: IDeployProps) => {
   const { auth, name, args, update, to } = props
 
   const resolvedTo = withPrefix(to ?? auth.address)

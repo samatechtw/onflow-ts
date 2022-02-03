@@ -1,6 +1,16 @@
-import { withPrefix } from './misc'
+import { toUFix64, withPrefix } from './misc'
 
 describe('util-flow', () => {
+  describe('toUFix64', () => {
+    it('returns a string representation of a UFix64 integer (8 decimal places)', () => {
+      expect(toUFix64(12)).toBe(`12.00000000`)
+    })
+
+    it('returns a string representation of a UFix64 float (8 decimal places)', () => {
+      expect(toUFix64(12.12345678)).toBe(`12.12345678`)
+    })
+  })
+
   describe('withPrefix', () => {
     it('returns address with prefix if no prefix is found', () => {
       const address = '0ae53cb6e3f42a79'
