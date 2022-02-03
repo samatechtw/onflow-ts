@@ -64,7 +64,7 @@ describe('config', () => {
 
     it('returns the address map with the new contract', () => {
       setContractAddress(newContractName, newContractAddress)
-      expect(getAddressMap()).toMatchObject(getAddressMapWithNewContract())
+      expect(getAddressMap()).toEqual(getAddressMapWithNewContract())
     })
   })
 
@@ -75,7 +75,7 @@ describe('config', () => {
 
     it('set address map without affecting defaults', () => {
       setAddressMap({ [newContractName]: newContractAddress })
-      expect(getAddressMap()).toMatchObject(getAddressMapWithNewContract())
+      expect(getAddressMap()).toEqual(getAddressMapWithNewContract())
     })
   })
 
