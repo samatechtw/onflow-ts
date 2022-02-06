@@ -8,7 +8,7 @@ const pkg = require('./package.json')
 
 export default [
   {
-    input: 'out-tsc/index.js',
+    input: 'out-tsc/esm/index.js',
     output: [
       {
         exports: 'named',
@@ -23,5 +23,12 @@ export default [
       builtins(),
       nodePolyfills({ include: null }),
     ],
+    // Ignore warnings from third party modules
+    onwarn: (warning, warn) => {
+      if (warning.id?.indexOf(__dirname + '/node_modules/') === 0) {
+        return
+      }
+      warn(warning)
+    },
   },
 ]

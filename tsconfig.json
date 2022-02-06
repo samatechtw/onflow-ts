@@ -5,6 +5,7 @@
     "outDir": "dist/cjs",
     "target": "es2015"
   },
+  "include": ["lib"],
   "references": [
     {
       "path": "./tsconfig.spec.json"

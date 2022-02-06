@@ -4,5 +4,6 @@
     "module": "esnext",
     "outDir": "out-tsc",
     "target": "esnext"
-  }
+  },
+  "include": ["lib/esm", "lib/shared", "lib/type", "index-esm.ts"]
 }
