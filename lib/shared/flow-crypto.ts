@@ -9,7 +9,7 @@ import {
   SigningData,
   TransactionSignature,
 } from '@samatech/onflow-fcl-esm'
-import { withPrefix } from './misc'
+import { withPrefix } from '../shared/misc'
 import { IFlowAccount } from '../type/i-flow-account'
 
 const ec = new EC('p256')

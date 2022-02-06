@@ -7,3 +7,11 @@ export interface IInteractionProps {
   auth?: FclAuthorization
   authorizations?: FclAuthorization[]
 }
+
+export interface IDeployInteractionProps
+  extends Omit<IInteractionProps, 'auth' | 'code'> {
+  update?: boolean
+  to: string
+  auth: FclAuthorization
+  hexCode: string
+}

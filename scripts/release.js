@@ -62,7 +62,7 @@ console.log('...updating version')
 
 try {
   pkg.version = newVersion
-  fs.writeFileSync(pkgFile, JSON.stringify(pkg, null, 2))
+  fs.writeFileSync(pkgFile, `${JSON.stringify(pkg, null, 2)}\n`)
 } catch (e) {
   errorExit('Failed to write new version to package.json: ' + e.message)
 }
