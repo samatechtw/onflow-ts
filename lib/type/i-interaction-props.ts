@@ -7,6 +7,9 @@ export interface IInteractionProps {
   auth?: FclAuthorization
   authorizations?: FclAuthorization[]
 }
+export interface ITransactionInteractionProps extends IInteractionProps {
+  waitForSealed?: boolean
+}
 
 export interface IDeployInteractionProps
   extends Omit<IInteractionProps, 'auth' | 'code'> {

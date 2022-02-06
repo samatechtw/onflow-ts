@@ -5,7 +5,11 @@ import { defaultsByName, getContractAddress } from './config'
 
 import { ContractMap } from '../type/contract-map'
 import { setContractAddress } from './config'
-import { IDeployInteractionProps, IInteractionProps } from '../type'
+import {
+  IDeployInteractionProps,
+  IInteractionProps,
+  ITransactionInteractionProps,
+} from '../type'
 
 /**
  * Resolves import addresses defined in code template
@@ -71,9 +75,10 @@ export const executeScript = async (
  * @param {FclAuthorization} [props.auth]  - transaction payer
  */
 export const sendTransaction = async (
-  props: IInteractionProps,
+  props: ITransactionInteractionProps,
 ): Promise<fcl.CadenceResult> => {
-  const { name, code, args, authorizations, auth } = props
+  const { name, code, args, authorizations, auth, waitForSealed } = props
+  const waitSealed = waitForSealed ?? true
 
   if (!name && !code) {
     throw Error('Both `name` and `code` are missing. Provide either of them')
@@ -105,7 +110,12 @@ export const sendTransaction = async (
     ix.push(fcl.args(args))
   }
   const response = await fcl.send(ix)
-  const transaction = await fcl.tx(response).onceExecuted()
+  let transaction
+  if (waitSealed) {
+    transaction = await fcl.tx(response).onceSealed()
+  } else {
+    transaction = fcl.tx(response)
+  }
   return {
     transactionId: response.transactionId,
     ...transaction,
