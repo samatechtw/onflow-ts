@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/samatechtw/onflow-ts#readme",
   "dependencies": {
-    "@samatech/onflow-fcl-esm": "^0.5.5",
+    "@samatech/onflow-fcl-esm": "^0.6.0",
     "chalk": "4.1.2",
     "elliptic": "^6.5.4",
     "sha3": "^2.1.4"
