@@ -11,3 +11,4 @@ export * from './shared/util-fcl'
 
 export * from './node/interactions'
 export * from './node/fusd'
+export * from './node/emulator'
