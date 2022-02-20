@@ -134,4 +134,4 @@ export class Emulator {
   }
 }
 
-export default new Emulator()
+export const emulator = new Emulator()
