@@ -2,6 +2,9 @@ import { CadenceEvent } from '@samatech/onflow-fcl-esm'
 import { findEvent } from './find-event'
 
 const event1: CadenceEvent = {
+  blockId: 'b6005443c0874c8a2f3cd9b3613732e6163a66b534215144643a8ed12e5d3383',
+  blockHeight: 23839302,
+  blockTimestamp: '2022-02-10T04:13:13.061Z',
   type: 'A.f8d6e0586b0a20c7.FUSD.TokensWithdrawn',
   transactionId: 'c37b493e4c9c94c50f2c6aec555d8f8fd97b42be0a053ce75f11aceb5022a416',
   transactionIndex: 1,
@@ -13,6 +16,9 @@ const event1: CadenceEvent = {
 }
 
 const event2: CadenceEvent = {
+  blockId: 'b6005443c0874c8a2f3cd9b3613732e6163a66b534215144643a8ed12e5d3383',
+  blockHeight: 23839302,
+  blockTimestamp: '2022-02-10T04:13:13.061Z',
   type: 'A.f8d6e0586b0a20c7.NFTStorefront.Purchase',
   transactionId: 'c37b493e4c9c94c50f2c6aec555d8f8fd97b42be0a053ce75f11aceb5022a416',
   transactionIndex: 1,
@@ -25,6 +31,9 @@ const event2: CadenceEvent = {
 }
 
 const event3: CadenceEvent = {
+  blockId: 'b6005443c0874c8a2f3cd9b3613732e6163a66b534215144643a8ed12e5d3383',
+  blockHeight: 23839302,
+  blockTimestamp: '2022-02-10T04:13:13.061Z',
   type: 'A.f8d6e0586b0a20c7.NFT.Deposit',
   transactionId: 'c37b493e4c9c94c50f2c6aec555d8f8fd97b42be0a053ce75f11aceb5022a416',
   transactionIndex: 1,
