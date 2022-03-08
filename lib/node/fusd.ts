@@ -68,7 +68,7 @@ export const getFusdBalance = async (account: IFlowAccount) => {
 
 /*
  * Transfers FUSD tokens to recipient's account
- * @param {IFlowAccount} recipient - transfer recipient
+ * @param {string} recipient - transfer recipient
  * @param {UFix64} amount - amount of FUSD tokens to transfer
  * @param {IFlowAccount} signer - transaction signer (or sender)
  * @throws If execution will be halted
@@ -76,11 +76,11 @@ export const getFusdBalance = async (account: IFlowAccount) => {
  * */
 export const transferFusd = async (
   amount: number,
-  recipient: IFlowAccount,
+  recipient: string,
   signer: IFlowAccount,
 ) => {
   const name = 'fusd/transfer_tokens'
-  const args = [arg(toUFix64(amount), t.UFix64), arg(recipient.address, t.Address)]
+  const args = [arg(toUFix64(amount), t.UFix64), arg(recipient, t.Address)]
   const signers = [signer]
 
   return transact({ name, args, signers })
