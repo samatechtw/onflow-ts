@@ -20,7 +20,7 @@ export const deployFusd = async (account: IFlowAccount) => {
  * @throws If execution will be halted
  * @returns {Promise<*>}
  * */
-export const setupFusdOnAccount = (account: IFlowAccount) => {
+export const setupFusdOnAccountCdc = (account: IFlowAccount) => {
   const name = 'fusd/setup_account'
   const signers = [account]
   return transact({
@@ -37,7 +37,7 @@ export const setupFusdOnAccount = (account: IFlowAccount) => {
  * @throws If execution will be halted
  * @returns {Promise<*>}
  * */
-export const mintFusdToAccount = async (
+export const mintFusdToAccountCdc = async (
   admin: IFlowAccount,
   recipient: IFlowAccount,
   amount: number,
@@ -59,7 +59,7 @@ export const mintFusdToAccount = async (
  * @throws If execution will be halted
  * @returns {Promise<*>}
  * */
-export const getFusdBalance = async (account: IFlowAccount) => {
+export const getFusdBalanceCdc = async (account: IFlowAccount) => {
   const name = 'fusd/get_balance'
   const args = [arg(account.address, t.Address)]
 
@@ -74,7 +74,7 @@ export const getFusdBalance = async (account: IFlowAccount) => {
  * @throws If execution will be halted
  * @returns {Promise<*>}
  * */
-export const transferFusd = async (
+export const transferFusdCdc = async (
   amount: number,
   recipient: string,
   signer: IFlowAccount,
