@@ -22,7 +22,7 @@ export class Emulator {
    * Create an emulator.
    */
   constructor(options?: EmulatorOptions) {
-    const resolvedOptions = options ?? {}
+    const resolvedOptions = options || {}
     this.logFilter = resolvedOptions.logFilter
     this.startFailed = false
   }

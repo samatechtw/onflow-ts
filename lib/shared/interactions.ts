@@ -78,7 +78,7 @@ export const sendTransaction = async (
   props: ITransactionInteractionProps,
 ): Promise<fcl.CadenceResult> => {
   const { name, code, args, authorizations, auth, waitForSealed } = props
-  const waitSealed = waitForSealed ?? true
+  const waitSealed = !!waitForSealed
 
   if (!name && !code) {
     throw Error('Both `name` and `code` are missing. Provide either of them')
@@ -86,7 +86,7 @@ export const sendTransaction = async (
 
   const ixCode = await replaceImportAddresses(code)
 
-  const payer = auth ?? (authorizations ?? [])[0]
+  const payer = auth || (authorizations || [])[0]
 
   if (!payer) {
     throw new Error('sendTransaction requires at least one authorization')

@@ -83,7 +83,7 @@ export const execute = async (name: string, args?: fcl.Argument[]): Promise<any>
 export const deploy = async (props: IDeployProps) => {
   const { auth, name, args, update, to } = props
 
-  const resolvedTo = withPrefix(to ?? auth.address)
+  const resolvedTo = withPrefix(to || auth.address)
   if (!resolvedTo) {
     throw new Error('Unable to resolve contract deploy address')
   }
