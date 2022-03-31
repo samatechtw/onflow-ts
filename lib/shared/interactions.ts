@@ -78,7 +78,7 @@ export const sendTransaction = async (
   props: ITransactionInteractionProps,
 ): Promise<fcl.CadenceResult> => {
   const { name, code, args, authorizations, auth, waitForSealed } = props
-  const waitSealed = !!waitForSealed
+  const waitSealed = waitForSealed === undefined ? true : waitForSealed
 
   if (!name && !code) {
     throw Error('Both `name` and `code` are missing. Provide either of them')
