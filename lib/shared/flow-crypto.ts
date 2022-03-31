@@ -40,14 +40,14 @@ export const authorizationMaybe = (
 
 export const authorization = (flowAccount: IFlowAccount): FclAuthorization => {
   return async (account: Account): Promise<AuthZ> => {
-    const keyId = flowAccount.keyId ?? 0
+    const keyId = flowAccount.keyId || 0
 
     const addr = sansPrefix(flowAccount.address)
 
     const signingFunction = (data: SigningData): TransactionSignature => {
       return {
         keyId,
-        addr: withPrefix(addr) ?? '',
+        addr: withPrefix(addr) || '',
         signature: signWithKey(flowAccount.privateKey, data.message),
       }
     }
