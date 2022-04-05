@@ -11,6 +11,7 @@ export * from './shared/util-fcl'
 export * from './shared/fusd'
 
 export * from './node/interactions'
+export * from './node/flow'
 export * from './node/fusd'
 export * from './node/emulator'
 export * from './node/util'
