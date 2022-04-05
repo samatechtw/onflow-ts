@@ -1,115 +1,34 @@
 import * as t from '@onflow/types'
-import { arg, Argument } from '@samatech/onflow-fcl-esm'
-import {
-  authorization,
-  executeScript,
-  replaceImportAddresses,
-  sendTransaction,
-  withPrefix,
-} from '../esm'
-import { IFlowAccount, ITransactionInteractionProps } from '../type'
-
-export const MINT_FLOW_CODE = `
-import FungibleToken from 0xFUNGIBLETOKENADDRESS
-import FlowToken from 0xTOKENADDRESS
-
-transaction(recipient: Address, amount: UFix64) {
-  let tokenAdmin: &FlowToken.Administrator
-  let tokenReceiver: &{FungibleToken.Receiver}
-
-  prepare(signer: AuthAccount) {
-      self.tokenAdmin = signer
-      .borrow<&FlowToken.Administrator>(from: /storage/flowTokenAdmin)
-      ?? panic("Signer is not the token admin")
-
-      self.tokenReceiver = getAccount(recipient)
-      .getCapability(/public/flowTokenReceiver)!
-      .borrow<&{FungibleToken.Receiver}>()
-      ?? panic("Unable to borrow receiver reference")
-  }
-
-  execute {
-      let minter <- self.tokenAdmin.createNewMinter(allowedAmount: amount)
-      let mintedVault <- minter.mintTokens(amount: amount)
-
-      self.tokenReceiver.deposit(from: <-mintedVault)
-
-      destroy minter
-  }
-}
-`
-
-export const TRANSFER_FLOW_CODE = `
-import FungibleToken from 0xFUNGIBLETOKENADDRESS
-import FlowToken from 0xTOKENADDRESS
-
-transaction(amount: UFix64, to: Address) {
-
-    // The Vault resource that holds the tokens that are being transferred
-    let sentVault: @FungibleToken.Vault
-
-    prepare(signer: AuthAccount) {
-
-        // Get a reference to the signer's stored vault
-        let vaultRef = signer.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
-			?? panic("Could not borrow reference to the owner's Vault!")
-
-        // Withdraw tokens from the signer's stored vault
-        self.sentVault <- vaultRef.withdraw(amount: amount)
-    }
-
-    execute {
-
-        // Get the recipient's public account object
-        let recipient = getAccount(to)
-
-        // Get a reference to the recipient's Receiver
-        let receiverRef = recipient.getCapability(/public/flowTokenReceiver)
-            .borrow<&{FungibleToken.Receiver}>()
-			?? panic("Could not borrow receiver reference to the recipient's Vault")
-
-        // Deposit the withdrawn tokens in the recipient's receiver
-        receiverRef.deposit(from: <-self.sentVault)
-    }
-}
-`
-
-export const GET_FLOW_BALANCE_CODE = `
-import FungibleToken from 0xFUNGIBLETOKENADDRESS
-import FlowToken from 0xTOKENADDRESS
-
-pub fun main(account: Address): UFix64 {
-
-    let vaultRef = getAccount(account)
-        .getCapability(/public/flowTokenBalance)
-        .borrow<&FlowToken.Vault{FungibleToken.Balance}>()
-        ?? panic("Could not borrow Balance reference to the Vault")
-
-    return vaultRef.balance
-}
-`
+import { arg } from '@samatech/onflow-fcl-esm'
+import { toUFix64, withPrefix } from '../shared/misc'
+import { IFlowAccount, ITransactProps } from '../type'
+import { execute, transact } from './interactions'
 
 /**
  * Sends transaction to mint specified amount of FlowToken and send it to recipient.
  * Returns result of the transaction.
  * @param {string} admin - authorizing account
  * @param {string} recipient - recipient account
- * @param {string} amount - amount to mint and send
+ * @param {number} amount - amount to mint and send
  * @returns {Promise<*>}
  */
 export const mintFlow = async (
   admin: IFlowAccount,
   recipient: IFlowAccount,
-  amount: string,
+  amount: number,
 ) => {
-  const code = await replaceImportAddresses(MINT_FLOW_CODE)
-  const args: Argument[] = [
+  const name = 'flow/mint_tokens'
+  const signers = [admin]
+  const args = [
     arg(withPrefix(recipient.address), t.Address),
-    arg(amount, t.UFix64),
+    arg(toUFix64(amount), t.UFix64),
   ]
-  const auth = authorization(admin)
 
-  return sendTransaction({ code, args, auth })
+  return transact({
+    name,
+    signers,
+    args,
+  })
 }
 
 /**
@@ -117,20 +36,20 @@ export const mintFlow = async (
  * Returns result of the transaction.
  * @param {string} sender - authorizing account
  * @param {string} to - recipient account
- * @param {string} amount - amount to transfer
+ * @param {number} amount - amount to transfer
  * @returns {Promise<*>}
  */
-export const transferFlow = async (
+export const transferFlowCdc = async (
   sender: IFlowAccount,
   to: IFlowAccount,
-  amount: string,
-  props?: Partial<ITransactionInteractionProps>,
+  amount: number,
+  props?: Partial<ITransactProps>,
 ) => {
-  const code = await replaceImportAddresses(TRANSFER_FLOW_CODE)
-  const args: Argument[] = [arg(amount, t.UFix64), arg(withPrefix(to.address), t.Address)]
-  const auth = authorization(sender)
+  const name = 'flow/transfer_tokens'
+  const args = [arg(toUFix64(amount), t.UFix64), arg(withPrefix(to.address), t.Address)]
+  const signers = [sender]
 
-  return sendTransaction({ ...(props ?? {}), code, args, auth })
+  return transact({ ...(props ?? {}), name, args, signers })
 }
 
 /**
@@ -140,9 +59,10 @@ export const transferFlow = async (
  * @returns {Promise<*>}
  */
 export const getFlowBalanceCdc = async (address: string) => {
-  const code = await replaceImportAddresses(GET_FLOW_BALANCE_CODE)
-  const args: Argument[] = [arg(withPrefix(address), t.Address)]
-  return executeScript({ code, args }) as unknown as string
+  const name = 'flow/get_balance'
+  const args = [arg(withPrefix(address), t.Address)]
+
+  return execute(name, args)
 }
 
 /**

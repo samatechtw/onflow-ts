@@ -42,7 +42,7 @@ const getCadenceCode = async ({ name, type }: IInteraction): Promise<string> => 
 }
 
 export const transact = async (props: ITransactProps): Promise<fcl.CadenceResult> => {
-  const { name, auth, signers, args } = props
+  const { name, auth, signers, args, waitForSealed } = props
 
   let resolvedSigners
   if (signers) {
@@ -63,6 +63,7 @@ export const transact = async (props: ITransactProps): Promise<fcl.CadenceResult
     args,
     auth: authorizationMaybe(auth),
     authorizations: resolvedSigners.map((signer) => authorization(signer)),
+    waitForSealed,
   })
 }
 

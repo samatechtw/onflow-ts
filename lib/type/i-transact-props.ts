@@ -6,4 +6,5 @@ export interface ITransactProps {
   auth?: IFlowAccount
   signers?: IFlowAccount[]
   args?: Argument[]
+  waitForSealed?: boolean
 }
