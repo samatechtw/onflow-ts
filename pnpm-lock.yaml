@@ -3,11 +3,11 @@ lockfileVersion: 5.3
 specifiers:
   '@commitlint/cli': ^16.2.1
   '@commitlint/config-angular': ^16.2.1
-  '@onflow/config': ^0.0.2
+  '@onflow/config': ^1.0.1
   '@rollup/plugin-commonjs': ^21.0.1
   '@rollup/plugin-json': ^4.1.0
   '@rollup/plugin-node-resolve': ^13.1.3
-  '@samatech/onflow-fcl-esm': ^0.6.0
+  '@samatech/onflow-fcl-esm': ^0.7.1
   '@types/elliptic': ^6.4.14
   '@types/jest': ^27.4.0
   '@types/node': ^17.0.18
@@ -23,14 +23,14 @@ specifiers:
   prettier: 2.5.1
   rollup: ^2.67.3
   rollup-plugin-node-builtins: ^2.1.2
-  rollup-plugin-polyfill-node: ^0.8.0
+  rollup-plugin-polyfill-node: ^0.9.0
   sha3: ^2.1.4
   ts-jest: ^27.1.3
   ts-node: ^10.5.0
   typescript: ^4.5.4
 
 dependencies:
-  '@samatech/onflow-fcl-esm': 0.6.0_google-protobuf@3.19.4
+  '@samatech/onflow-fcl-esm': 0.7.1
   chalk: 4.1.2
   elliptic: 6.5.4
   sha3: 2.1.4
@@ -38,7 +38,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 16.2.1
   '@commitlint/config-angular': 16.2.1
-  '@onflow/config': 0.0.2
+  '@onflow/config': 1.0.1
   '@rollup/plugin-commonjs': 21.0.1_rollup@2.67.3
   '@rollup/plugin-json': 4.1.0_rollup@2.67.3
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.67.3
@@ -55,7 +55,7 @@ devDependencies:
   prettier: 2.5.1
   rollup: 2.67.3
   rollup-plugin-node-builtins: 2.1.2
-  rollup-plugin-polyfill-node: 0.8.0_rollup@2.67.3
+  rollup-plugin-polyfill-node: 0.9.0_rollup@2.67.3
   ts-jest: 27.1.3_1e2406a8ca2ae3dc934d01f9ee2aebbb
   ts-node: 10.5.0_f3bd4037939c2ed2942ba074291f8ef2
   typescript: 4.5.5
@@ -593,32 +593,6 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@improbable-eng/grpc-web-node-http-transport/0.14.1_@improbable-eng+grpc-web@0.14.1:
-    resolution: {integrity: sha512-ZsCTzI1iKUbmQjB5DNZSI5/hvdliuaPpS2h8mVj1QzynL3IFb5NrNnHVHbfcH1wbm26Ka6Z1CrKFGvKLrmbFIg==}
-    peerDependencies:
-      '@improbable-eng/grpc-web': '>=0.13.0'
-    dependencies:
-      '@improbable-eng/grpc-web': 0.14.1_google-protobuf@3.19.4
-    dev: false
-
-  /@improbable-eng/grpc-web/0.12.0_google-protobuf@3.19.4:
-    resolution: {integrity: sha512-uJjgMPngreRTYPBuo6gswMj1gK39Wbqre/RgE0XnSDXJRg6ST7ZhuS53dFE6Vc2CX4jxgl+cO+0B3op8LA4Q0Q==}
-    peerDependencies:
-      google-protobuf: ^3.2.0
-    dependencies:
-      browser-headers: 0.4.1
-      google-protobuf: 3.19.4
-    dev: false
-
-  /@improbable-eng/grpc-web/0.14.1_google-protobuf@3.19.4:
-    resolution: {integrity: sha512-XaIYuunepPxoiGVLLHmlnVminUGzBTnXr8Wv7khzmLWbNw4TCwJKX09GSMJlKhu/TRk6gms0ySFxewaETSBqgw==}
-    peerDependencies:
-      google-protobuf: ^3.14.0
-    dependencies:
-      browser-headers: 0.4.1
-      google-protobuf: 3.19.4
-    dev: false
-
   /@istanbuljs/load-nyc-config/1.1.0:
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
     engines: {node: '>=8'}
@@ -858,83 +832,93 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@onflow/config/0.0.2:
-    resolution: {integrity: sha512-H/+yrAalzEnMWkubiWsDdWytKSzd+OfRCddTlaRUelxfXhcfw2QWegH9N8EzeKfKXcQ6PLzvu9vQwhFxCZTE8Q==}
+  /@onflow/config/1.0.1:
+    resolution: {integrity: sha512-t7HZ+Dzg6fyLv6uo+EJy2l2aB6l/p+lzjm+PTw+0aCMN59SNVYzCV1FdQNT7yhhz3nqtkFCwDMn6nul5R0XVBQ==}
     dependencies:
-      '@onflow/util-actor': 0.0.2
-    dev: true
+      '@onflow/util-actor': 1.0.1
 
-  /@onflow/fcl/0.0.78_google-protobuf@3.19.4:
-    resolution: {integrity: sha512-zWtzCjG2URWXLblSsXiSKr3qBroq2BSVGsZrWeosbmup/03fb/MJ10w3ECF83Cd2m/M0TevSSp+hcpdBVLZSfw==}
+  /@onflow/fcl/1.0.2:
+    resolution: {integrity: sha512-QzK6G5ISwns08rRc2p7N2BB0icLm5dGjzEtdU7UmM+j8gFh0DQh3T/2XMopcPLMIwuIzrY7OhlSEgoBtqTeQRw==}
     dependencies:
+      '@onflow/config': 1.0.1
       '@onflow/interaction': 0.0.11
-      '@onflow/rlp': 0.0.3
-      '@onflow/sdk': 0.0.56_google-protobuf@3.19.4
-      '@onflow/types': 0.0.6
-      '@onflow/util-actor': 0.0.2
-      '@onflow/util-address': 0.0.0
-      '@onflow/util-invariant': 0.0.0
-      '@onflow/util-template': 0.0.1
-      '@onflow/util-uid': 0.0.1
-    transitivePeerDependencies:
-      - google-protobuf
+      '@onflow/rlp': 1.0.1
+      '@onflow/sdk': 1.0.1
+      '@onflow/types': 1.0.1
+      '@onflow/util-actor': 1.0.1
+      '@onflow/util-address': 1.0.1
+      '@onflow/util-invariant': 1.0.1
+      '@onflow/util-template': 1.0.1
+      '@onflow/util-uid': 1.0.1
     dev: false
 
   /@onflow/interaction/0.0.11:
     resolution: {integrity: sha512-Xuq1Mmx6Wyba/F/L+QLQs0yJeQDsIDwy5SKk5vrCuVgIj0yD8k506g5L8ODrbM1LWll8i0tQsoOi0F85vNl5sA==}
     dev: false
 
-  /@onflow/protobuf/0.1.8:
-    resolution: {integrity: sha512-Taww31RrpJMr3fkWgF2HR2TcRbAoPbMjwRYt9IlYknyRX5YTzpaU35petdqDRfxwmfY9mRxHbiInujX4aV02Hw==}
+  /@onflow/rlp/1.0.1:
+    resolution: {integrity: sha512-n4zEU8e08isWfC6F2FL4wduIFoMgqJQXTHI93tUTR3Fe7u50qlvkX4FidNC87f5klkhSWrypqg8/+7wL+QHmeQ==}
     dependencies:
-      '@improbable-eng/grpc-web': 0.12.0_google-protobuf@3.19.4
-      google-protobuf: 3.19.4
+      buffer: 6.0.3
     dev: false
 
-  /@onflow/rlp/0.0.3:
-    resolution: {integrity: sha512-oAf0VEiMjX8eC6Vd66j1BdGYTHOM6UBaS/sLSScnc7bKX5gICqe2gtEsCeJVE9rUzRk3GD3JqXRnPAW6YFWd/Q==}
-    dev: false
-
-  /@onflow/sdk/0.0.56_google-protobuf@3.19.4:
-    resolution: {integrity: sha512-yYOE+5Tvgprqo01vSxIgYTu4fO6sDFfyueVYFgzXx/F0fdHqy0zfAq+gEVjtWG+LvVD/YvR8eRbcBpfvXu1USA==}
+  /@onflow/sdk/1.0.1:
+    resolution: {integrity: sha512-mlQ12cLAqg+ekIJU1U9JOyFbsouuRrbyLFd2oM84F1++5j3EnD2u2PihohUL6bXtQbaLSWNnvIfQBmtMIzuQZQ==}
     dependencies:
-      '@improbable-eng/grpc-web': 0.14.1_google-protobuf@3.19.4
-      '@improbable-eng/grpc-web-node-http-transport': 0.14.1_@improbable-eng+grpc-web@0.14.1
-      '@onflow/protobuf': 0.1.8
-      '@onflow/rlp': 0.0.3
-      '@onflow/util-actor': 0.0.2
-      '@onflow/util-address': 0.0.0
-      '@onflow/util-invariant': 0.0.0
-      '@onflow/util-template': 0.0.1
+      '@onflow/config': 1.0.1
+      '@onflow/rlp': 1.0.1
+      '@onflow/transport-http': 1.2.0
+      '@onflow/util-actor': 1.0.1
+      '@onflow/util-address': 1.0.1
+      '@onflow/util-invariant': 1.0.1
+      '@onflow/util-logger': 1.0.1
+      '@onflow/util-template': 1.0.1
       deepmerge: 4.2.2
       sha3: 2.1.4
-    transitivePeerDependencies:
-      - google-protobuf
     dev: false
 
-  /@onflow/types/0.0.6:
-    resolution: {integrity: sha512-2eBrmqiFO37EUOJvzksygP8Wu6lL/m9az36AF0qYdGQW/79KGCHBCchUsIzxyGt8UDXl/dgnIcMkiTH7tWZqXg==}
+  /@onflow/transport-http/1.2.0:
+    resolution: {integrity: sha512-+Qejt1flUpB1B4sS1uFA9RNuL5+ZrOXC/1EyH2UpwuTZ4MIN3ATCVWiGaHr+LydgHzcBKugkiQLxAVYbBtFq6A==}
+    dependencies:
+      '@onflow/util-address': 1.0.1
+      '@onflow/util-invariant': 1.0.1
+      '@onflow/util-node-http-modules': 1.0.2
+      '@onflow/util-template': 1.0.1
     dev: false
 
-  /@onflow/util-actor/0.0.2:
-    resolution: {integrity: sha512-NV3zPXQue3FqVgcIIMo6ifJOiP3hVSQTaR4ZrWLFU5iAZ/L73cTtBMbCB4BUFOe20ALtF2c9PFmpNVowCYV+nw==}
+  /@onflow/types/1.0.1:
+    resolution: {integrity: sha512-1fmNUIqi6shXs0OCt0nouXgg0y/PtZoQp8128sOtB5zGdzaTwiluoYZMNtashdTQbqY4ZssTMJjSObPWhyIzAA==}
+    dev: false
+
+  /@onflow/util-actor/1.0.1:
+    resolution: {integrity: sha512-iGvwLsG33dZrglKaCqqCXcopUEzUQMy2tJum4sYu7grjZkzHlvayVUCbudgkPeVe7JrB7qholA/Fj6hUI2rMXw==}
     dependencies:
       queue-microtask: 1.1.2
 
-  /@onflow/util-address/0.0.0:
-    resolution: {integrity: sha512-Lzbw/wV3O1fmfXYF2q6iGLgHz/7ATsLXOHceP5tzeEAKNf+srdtTNJv5jhNGhpFFAtQ6TcomXURVMhUg+/4YbA==}
+  /@onflow/util-address/1.0.1:
+    resolution: {integrity: sha512-KanTfsZTBS4iETegtNWDfmQEXd7FapSyTm//N0tdF6hVoTxLI/DNd0Y39adhQasAyrO294q/I72wQUVO+WT7Fg==}
     dev: false
 
-  /@onflow/util-invariant/0.0.0:
-    resolution: {integrity: sha512-ZCt+NqLdeHt9tZhb0DGxo6iSIS9oNUpLkd0PEMzUYUHr4UwrUO7VruV1AUW3PaF9V78DZ13fNZUiQEzdF76O/w==}
+  /@onflow/util-invariant/1.0.1:
+    resolution: {integrity: sha512-FYLgxASDmD2qVru8G8MX9y3jE8DFie1fk7lWnWndnJvsO94/jmZaql73ytmZme37TQoTWSNfilAgU9T0HcG/gA==}
     dev: false
 
-  /@onflow/util-template/0.0.1:
-    resolution: {integrity: sha512-qlJ0oq+QujnZRCOGYaw5OKSDpiDIOpwQMYlMe4Mbz//Wn+LOmUghoKZGmRP+YCgp7BJ4aB6AWW/7kL83NDy50A==}
+  /@onflow/util-logger/1.0.1:
+    resolution: {integrity: sha512-0QQ/h8mDQIe9yy6xvFj5GOu7Mo1ZnjwaFcGQRTuM+V6XMD5cxs3IChKYIDuuGIZtzwyf0kwK+HXOqrFQhfB9fg==}
+    dependencies:
+      '@onflow/sdk': 1.0.1
     dev: false
 
-  /@onflow/util-uid/0.0.1:
-    resolution: {integrity: sha512-SzBscBdyn1Zoks0Wo/w7J/Ds9IZ/T+KM/wyWMwWla4PnxwBFviy1BytEQY+sM5q1UNOvaGWgGEoRmH/oOCcglA==}
+  /@onflow/util-node-http-modules/1.0.2:
+    resolution: {integrity: sha512-aj+G1Q9Irk0SBFY3jFHPhxe5Tcfn6YKZULTnsEiedsLsanNoTIZ6RGGcD4Z/LEZp3mW9MIni8voPFJifrSND5w==}
+    dev: false
+
+  /@onflow/util-template/1.0.1:
+    resolution: {integrity: sha512-+aRn0tjWkE5csPXtijoETxIkwZwH+vSQJgjSL6s6gfeleS6kJNI3uXyrJberATAg/oK5XDtymNwxJxh8lxZS3g==}
+    dev: false
+
+  /@onflow/util-uid/1.0.1:
+    resolution: {integrity: sha512-/CHK3AC8Ex2uUFmbmrVbp/NlmSfkVPUxbkImoBgjf0WecodD7yCFojYePfB8srjk+LsAyMP6iOmcyiMDYiaM6Q==}
     dev: false
 
   /@rollup/plugin-commonjs/21.0.1_rollup@2.67.3:
@@ -1000,14 +984,12 @@ packages:
       rollup: 2.67.3
     dev: true
 
-  /@samatech/onflow-fcl-esm/0.6.0_google-protobuf@3.19.4:
-    resolution: {integrity: sha512-HMVQOh5xSsD2qJsyKYVKIsG56sBnyccOv5RcFZyTojDxHH0Lm4SvdLub46meN0tBBNXBk7C84Gk89K8j6OPvDg==}
+  /@samatech/onflow-fcl-esm/0.7.1:
+    resolution: {integrity: sha512-SeXewu8t+OfCBgR3g5EO2QQky5A5RFdKzw0M9cdgXHxVZxdvDohBVZ44agSiGM5SvY4oi92HQzBNq4xRwI0+Nw==}
     dependencies:
-      '@onflow/fcl': 0.0.78_google-protobuf@3.19.4
+      '@onflow/fcl': 1.0.2
       buffer: 6.0.3
       http-browserify: 1.7.0
-    transitivePeerDependencies:
-      - google-protobuf
     dev: false
 
   /@sinonjs/commons/1.8.3:
@@ -1292,7 +1274,7 @@ packages:
     dev: true
 
   /Base64/0.2.1:
-    resolution: {integrity: sha1-ujpCMHCOGGcFBl5mur3Uw1z2ACg=}
+    resolution: {integrity: sha512-reGEWshDmTDQDsCec/HduOO9Wyj6yMOupMfhIf3ugN1TDlK2NQW4DDJSqNNtp380SNcvRfXtO8HSCQot0d0SMw==}
     dev: false
 
   /JSONStream/1.3.5:
@@ -1577,10 +1559,6 @@ packages:
 
   /brorand/1.1.0:
     resolution: {integrity: sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=}
-
-  /browser-headers/0.4.1:
-    resolution: {integrity: sha512-CA9hsySZVo9371qEHjHZtYxV2cFtVj5Wj/ZHi8ooEsrtm4vOnl9Y9HmyYWk9q+05d7K3rdoAE0j3MVEFVvtQtg==}
-    dev: false
 
   /browser-process-hrtime/1.0.0:
     resolution: {integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==}
@@ -2707,6 +2685,7 @@ packages:
 
   /google-protobuf/3.19.4:
     resolution: {integrity: sha512-OIPNCxsG2lkIvf+P5FNfJ/Km95CsXOBecS9ZcAU6m2Rq3svc0Apl9nB3GMDNKfQ9asNv4KjyAqGwPQFrVle3Yg==}
+    dev: true
 
   /graceful-fs/4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
@@ -2794,7 +2773,7 @@ packages:
     dev: true
 
   /http-browserify/1.7.0:
-    resolution: {integrity: sha1-M3la3nLfiKz7/TZ3PO/tp2RzWyA=}
+    resolution: {integrity: sha512-Irf/LJXmE3cBzU1eaR4+NEX6bmVLqt1wkmDiA7kBwH7zmb0D8kBAXsDmQ88hhj/qv9iEZKlyGx/hrMcFi8sOHw==}
     dependencies:
       Base64: 0.2.1
       inherits: 2.0.4
@@ -4535,8 +4514,8 @@ packages:
       process-es6: 0.11.6
     dev: true
 
-  /rollup-plugin-polyfill-node/0.8.0_rollup@2.67.3:
-    resolution: {integrity: sha512-C4UeKedOmOBkB3FgR+z/v9kzRwV1Q/H8xWs1u1+CNe4XOV6hINfOrcO+TredKxYvopCmr+WKUSNsFUnD1RLHgQ==}
+  /rollup-plugin-polyfill-node/0.9.0_rollup@2.67.3:
+    resolution: {integrity: sha512-cVqm7LjgBqtZ77M9hLYayXrLz18nLIVPp3MPqNi2suStrFDg1LsA2cSdMIighr2yeuAQrphu8ymXTAsJNVABow==}
     peerDependencies:
       rollup: ^1.20.0 || ^2.0.0
     dependencies:
