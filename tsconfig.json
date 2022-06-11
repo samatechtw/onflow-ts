@@ -3,7 +3,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "dist/",
-    "target": "es2015"
+    "target": "es2015",
+    "types": ["node"]
   },
   "include": ["lib"],
   "references": [

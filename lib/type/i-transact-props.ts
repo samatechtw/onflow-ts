@@ -1,4 +1,4 @@
-import { Argument } from '@samatech/onflow-fcl-esm'
+import { Argument } from '@onflow/fcl'
 import { IFlowAccount } from './i-flow-account'
 
 export interface ITransactProps {

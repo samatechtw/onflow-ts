@@ -5,5 +5,5 @@
     "outDir": "out-tsc",
     "target": "esnext"
   },
-  "include": ["lib/esm", "lib/shared", "lib/type", "index-esm.ts"]
+  "include": ["lib/esm", "lib/shared", "lib/type", "index-esm.ts", "**/*.d.ts"]
 }

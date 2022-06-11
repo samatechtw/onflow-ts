@@ -1,4 +1,4 @@
-import { AnyJson, IJsonObject } from '@samatech/onflow-fcl-esm'
+import { AnyJson, IJsonObject } from '@onflow/fcl'
 import { ContractMap } from '../type/contract-map'
 
 /**

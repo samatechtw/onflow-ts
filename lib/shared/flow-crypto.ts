@@ -8,7 +8,7 @@ import {
   sansPrefix,
   SigningData,
   TransactionSignature,
-} from '@samatech/onflow-fcl-esm'
+} from '@onflow/fcl'
 import { withPrefix } from '../shared/misc'
 import { IFlowAccount } from '../type/i-flow-account'
 

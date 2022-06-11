@@ -1,4 +1,4 @@
-import { arg } from '@samatech/onflow-fcl-esm'
+import { arg } from '@onflow/fcl'
 import * as t from '@onflow/types'
 import { IFlowAccount } from '../type'
 import { deploy, transact, execute } from './interactions'

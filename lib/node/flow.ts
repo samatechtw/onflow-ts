@@ -1,5 +1,5 @@
 import * as t from '@onflow/types'
-import { arg } from '@samatech/onflow-fcl-esm'
+import { arg } from '@onflow/fcl'
 import { toUFix64, withPrefix } from '../shared/misc'
 import { IFlowAccount, ITransactProps } from '../type'
 import { execute, transact } from './interactions'

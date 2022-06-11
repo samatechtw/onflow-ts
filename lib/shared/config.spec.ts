@@ -1,4 +1,4 @@
-import { AnyJson } from '@samatech/onflow-fcl-esm'
+import { AnyJson } from '@onflow/fcl'
 import { ContractMap } from '../type/contract-map'
 import {
   getAddressMap,

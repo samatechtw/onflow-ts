@@ -1,4 +1,4 @@
-import { Argument, FclAuthorization } from '@samatech/onflow-fcl-esm'
+import { Argument, FclAuthorization } from '@onflow/fcl'
 
 export interface ResolvedInteractionProps {
   name: string

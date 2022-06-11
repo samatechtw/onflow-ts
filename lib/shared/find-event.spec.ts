@@ -1,4 +1,4 @@
-import { CadenceEvent } from '@samatech/onflow-fcl-esm'
+import { CadenceEvent } from '@onflow/fcl'
 import { findEvent } from './find-event'
 
 const event1: CadenceEvent = {
