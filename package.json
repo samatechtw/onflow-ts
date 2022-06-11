@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "clean": "rm -rf dist/* && rm -rf out-tsc/*",
-    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json && rollup -c rollup.config.js && cp out-tsc/esm/index.d.ts dist/esm/",
+    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json && rollup -c rollup.config.js && cp out-tsc/esm/index.d.ts dist/esm/ && cp lib/declaration.d.ts dist/",
     "test": "jest --config=jest.config.ts",
     "lint": "eslint --ext .js,.ts .",
     "format": "prettier -w \"{**/*,*}.{ts,js,json}\"",
