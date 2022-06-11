@@ -86,23 +86,20 @@ export class Emulator {
     return new Promise((resolve, reject) => {
       const checkLiveness = async function () {
         try {
-          console.log('NODE', await config().get('accessNode.api'))
           await send(build([getBlock(false)])).then(decode)
 
           clearInterval(waitReadyTimeout)
           resolve(true)
         } catch (err) {
-          // eslint-disable-line no-unused-vars
-          console.log('Flow emulator not ready yet', err)
+          console.log('Flow emulator not ready yet')
         }
       }
       let waitReadyTimeout: NodeJS.Timeout | undefined
 
       this.process?.stdout?.on('data', (data) => {
-        console.log(data.toString())
         if (data.includes('Starting admin server')) {
           this.log('EMULATOR IS UP! Listening for events!', true)
-          waitReadyTimeout = setInterval(checkLiveness, 1000)
+          waitReadyTimeout = setInterval(checkLiveness, 100)
         } else if (data.includes('Server stopped')) {
           clearInterval(waitReadyTimeout)
           this.log('Emulator closed', true)
