@@ -8,7 +8,7 @@ import {
   send,
   TransactionData,
   getTransactionStatus as fclGetTransactionStatus,
-} from '@samatech/onflow-fcl-esm'
+} from '@onflow/fcl'
 
 // Fetch the latest block in the blockchain
 export const fetchLatestBlock = async (): Promise<BlockObject> => {

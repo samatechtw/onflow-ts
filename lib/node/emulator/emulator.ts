@@ -1,15 +1,23 @@
 import { ChildProcess, spawn } from 'child_process'
-import { build, decode, getBlock, send } from '@samatech/onflow-fcl-esm'
+import { build, decode, getBlock, send } from '@onflow/fcl'
+import { config } from '@onflow/config'
 
 const DEFAULT_HTTP_PORT = 7000
+const DEFAULT_REST_PORT = 8888
 const DEFAULT_GRPC_PORT = 3569
 
 export type EmulatorLogFilter = (message: string) => string | undefined
 
 type LogType = 'info' | 'warn' | 'error' | 'log'
 
-interface EmulatorOptions {
+export interface EmulatorOptions {
   logFilter?: EmulatorLogFilter
+}
+
+export interface EmulatorStartOptions {
+  grpcPort?: number
+  adminPort?: number
+  restPort?: number
 }
 
 /** Class representing emulator */
@@ -55,16 +63,19 @@ export class Emulator {
    * Start emulator.
    * @param {number} port - port to use for accessApi
    */
-  start = async (port = DEFAULT_HTTP_PORT): Promise<boolean> => {
-    const offset = port - DEFAULT_HTTP_PORT
-    const grpc = DEFAULT_GRPC_PORT + offset
+  start = async (options?: EmulatorStartOptions): Promise<boolean> => {
+    const admin = options?.adminPort ?? DEFAULT_HTTP_PORT
+    const rest = options?.restPort ?? DEFAULT_REST_PORT
+    const grpc = options?.grpcPort ?? DEFAULT_GRPC_PORT
 
     this.process = spawn('flow', [
       'emulator',
       '-v',
-      '--grpc-debug',
+      // '--grpc-debug',
       '--admin-port',
-      port.toString(),
+      admin.toString(),
+      '--rest-port',
+      rest.toString(),
       '--port',
       grpc.toString(),
     ])
@@ -75,20 +86,28 @@ export class Emulator {
     return new Promise((resolve, reject) => {
       const checkLiveness = async function () {
         try {
+          console.log('NODE', await config().get('accessNode.api'))
           await send(build([getBlock(false)])).then(decode)
 
           clearInterval(waitReadyTimeout)
           resolve(true)
         } catch (err) {
           // eslint-disable-line no-unused-vars
-          console.log('Flow emulator not ready yet')
+          console.log('Flow emulator not ready yet', err)
         }
       }
-      const waitReadyTimeout = setInterval(checkLiveness, 100)
+      let waitReadyTimeout: NodeJS.Timeout | undefined
 
       this.process?.stdout?.on('data', (data) => {
-        if (data.includes('Starting HTTP server')) {
+        console.log(data.toString())
+        if (data.includes('Starting admin server')) {
           this.log('EMULATOR IS UP! Listening for events!', true)
+          waitReadyTimeout = setInterval(checkLiveness, 1000)
+        } else if (data.includes('Server stopped')) {
+          clearInterval(waitReadyTimeout)
+          this.log('Emulator closed', true)
+          this.process = undefined
+          reject('Emulator closed, check logs for reason')
         } else {
           this.log(data.toString())
         }

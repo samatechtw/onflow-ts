@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code into workspace directory
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.29.1
+          version: 7.2.1
       - name: Set up NodeJS v16
         uses: actions/setup-node@v2
         with:
@@ -34,12 +34,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code into workspace directory
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.29.1
+          version: 7.2.1
       - name: Set up NodeJS v16
         uses: actions/setup-node@v2
         with:
@@ -53,14 +53,16 @@ jobs:
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-20.04
+    env:
+      FLOW_CLI_VER: v0.35.0
     steps:
       - name: Checkout code into workspace directory
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.29.1
+          version: 7.2.1
       - name: Set up NodeJS v16
         uses: actions/setup-node@v2
         with:
@@ -68,6 +70,10 @@ jobs:
           cache: 'pnpm'
       - name: Install npm modules
         run: pnpm install
+      - name: Install Flow CLI
+        run: |
+          curl -fsSL https://storage.googleapis.com/flow-cli/install.sh | bash -s ${{env.FLOW_CLI_VER}}
+          flow version
       - name: Run unit tests
         run: npm run test
 
@@ -76,12 +82,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code into workspace directory
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.29.1
+          version: 7.2.1
       - name: Set up NodeJS v16
         uses: actions/setup-node@v2
         with:

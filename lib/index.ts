@@ -1,4 +1,5 @@
 export * from './type'
+export * from './enum-transaction-status'
 
 export * from './shared/code'
 export * from './shared/config'

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import * as fcl from '@samatech/onflow-fcl-esm'
+import * as fcl from '@onflow/fcl'
 import { config } from '@onflow/config'
 
 import { getTemplate } from '../shared/code'

@@ -1,4 +1,4 @@
-import { sansPrefix } from '@samatech/onflow-fcl-esm'
+import { sansPrefix } from '@onflow/fcl'
 
 /**
  * Returns a full event id based on provided parameters

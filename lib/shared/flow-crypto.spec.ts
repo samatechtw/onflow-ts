@@ -1,4 +1,4 @@
-import { Account, AuthZ, sansPrefix } from '@samatech/onflow-fcl-esm'
+import { Account, AuthZ, sansPrefix } from '@onflow/fcl'
 import { authorization, authorizationMaybe } from './flow-crypto'
 import { IFlowAccount } from '../type/i-flow-account'
 

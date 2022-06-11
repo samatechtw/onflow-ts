@@ -1,4 +1,4 @@
-import { sansPrefix } from '@samatech/onflow-fcl-esm'
+import { sansPrefix } from '@onflow/fcl'
 
 const UFIX64_PRECISION = 8
 

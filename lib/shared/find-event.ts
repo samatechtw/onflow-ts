@@ -1,4 +1,4 @@
-import { CadenceEvent } from '@samatech/onflow-fcl-esm'
+import { CadenceEvent } from '@onflow/fcl'
 
 /**
  * Returns an event for the given type

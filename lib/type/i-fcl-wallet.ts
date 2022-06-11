@@ -1,4 +1,4 @@
-import { FclAuthorization, UserSnapshot } from '@samatech/onflow-fcl-esm'
+import { FclAuthorization, UserSnapshot } from '@onflow/fcl'
 
 export interface IFclWallet extends UserSnapshot {
   // Used for development/test signing

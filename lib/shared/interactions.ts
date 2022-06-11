@@ -1,4 +1,4 @@
-import * as fcl from '@samatech/onflow-fcl-esm'
+import * as fcl from '@onflow/fcl'
 import * as t from '@onflow/types'
 import { getTemplate, extractImports } from './code'
 import { defaultsByName, getContractAddress } from './config'
