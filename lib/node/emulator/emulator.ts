@@ -98,10 +98,12 @@ export class Emulator {
 
       this.process?.stdout?.on('data', (data) => {
         if (data.includes('Starting admin server')) {
+          this.log(data.toString())
           this.log('EMULATOR IS UP! Listening for events!', true)
           waitReadyTimeout = setInterval(checkLiveness, 100)
         } else if (data.includes('Server stopped')) {
           clearInterval(waitReadyTimeout)
+          this.log(data.toString())
           this.log('Emulator closed', true)
           this.process = undefined
           reject('Emulator closed, check logs for reason')
