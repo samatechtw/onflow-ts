@@ -16,5 +16,11 @@ describe('Emulator interactions', () => {
       restPort: port,
     })
     await emulator.stop()
+
+    // Start and stop again to test reset
+    await emulator.start({
+      restPort: port,
+    })
+    await emulator.stop()
   })
 })
