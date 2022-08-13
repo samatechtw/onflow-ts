@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import { AnyJson } from '@onflow/fcl'
 import { ContractMap } from '../type/contract-map'
 import {

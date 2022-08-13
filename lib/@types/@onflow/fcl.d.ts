@@ -10,12 +10,6 @@ declare module '@onflow/fcl-config' {
   export { flowConfig }
 }
 
-declare module '@onflow/transport-grpc' {
-  import { send } from '@onflow/transport-grpc'
-
-  export { send }
-}
-
 declare module '*.cdc' {
   const content: string
   export default content
