@@ -1,11 +1,11 @@
 import { jest } from '@jest/globals'
-import chalk from 'chalk'
+import pc from 'picocolors'
 import { logFilter } from './log-filter'
 
-jest.mock('chalk', () => ({
+jest.mock('picocolors', () => ({
   green: jest.fn(),
 }))
-const mockedChalk = chalk as jest.Mocked<typeof chalk>
+const mockedPc = pc as jest.Mocked<typeof pc>
 
 describe('emulator log-filter', () => {
   it('returns undefined if filter not matched', () => {
@@ -14,11 +14,11 @@ describe('emulator log-filter', () => {
   })
 
   it('returns undefined if cannot find a matching event', () => {
-    mockedChalk.green.mockReturnValueOnce('test-blue')
+    mockedPc.green.mockReturnValueOnce('test-blue')
     const log = 'LOG: test log'
     const result = logFilter(`.....${log}\\"`)
     expect(result).toBeTruthy()
 
-    expect(chalk.green).toHaveBeenCalledWith(log)
+    expect(pc.green).toHaveBeenCalledWith(log)
   })
 })
