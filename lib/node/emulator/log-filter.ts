@@ -1,9 +1,9 @@
-import chalk from 'chalk'
+import pc from 'picocolors'
 
 export const logFilter = (message: string): string | undefined => {
   const match = message.match(/^.*(LOG:[\s\S]*?)\\".*$/s)
   if (match) {
-    return `${chalk.green(match[1])}\n`
+    return `${pc.green(match[1])}\n`
   }
   return undefined
 }
