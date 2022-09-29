@@ -18,6 +18,8 @@ export interface EmulatorStartOptions {
   grpcPort?: number
   adminPort?: number
   restPort?: number
+  accessNode?: string
+  basePath?: string
 }
 
 /** Class representing emulator */

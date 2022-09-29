@@ -10,20 +10,37 @@ import { InteractionType, IDeployProps, IInteraction, ITransactProps } from '../
 import { executeScript, sendTransaction, deployContract } from '../shared/interactions'
 import { authorization, authorizationMaybe } from '../shared/flow-crypto'
 
-export const readFile = (path: string) => {
-  return fs.readFileSync(path, 'utf8')
+export const defaultCdcDirectories = {
+  [InteractionType.CONTRACT]: './contracts/',
+  [InteractionType.TRANSACTION]: './transactions/',
+  [InteractionType.SCRIPT]: './scripts/',
 }
 
-export const getPath = async (name: string, type: InteractionType) => {
+// Gets a Cadence file. Attempts to fall back on builtins if not found
+export const getCadenceFile = async (
+  name: string,
+  type: InteractionType,
+): Promise<string> => {
   const configBase = await config().get('BASE_PATH')
-  const cdcDirectories = await config().get('CDC_DIRECTORIES')
-  if (!configBase || !cdcDirectories) {
-    throw new ReferenceError('BASE_PATH or CDC_DIRECTORIES not set.')
+  const customCdcDirectories = await config().get('CDC_DIRECTORIES')
+  if (!configBase) {
+    throw new ReferenceError('BASE_PATH not set.')
   }
-  // Set directory where Cadence files of certain type are residing
-  // e.g TRANSACTION: './transactions/' => directory = './transactions/'
+  const cdcDirectories = {
+    ...defaultCdcDirectories,
+    ...(customCdcDirectories || {}),
+  }
+  // Directory where Cadence contracts, transactions, or scripts reside
   const directory = cdcDirectories[type]
-  return path.resolve(configBase, `${directory}/${name}.cdc`)
+  const subPath = `${directory}/${name}.cdc`
+  // Try to get path from application
+  const userPath = path.resolve(configBase, subPath)
+  if (fs.existsSync(userPath)) {
+    return fs.readFileSync(userPath, 'utf8')
+  }
+  // Fall back on builtin Cadence files
+  const builtinPath = path.resolve(__dirname, '../cadence', subPath)
+  return fs.readFileSync(builtinPath, 'utf8')
 }
 
 /**
@@ -36,9 +53,9 @@ export const getPath = async (name: string, type: InteractionType) => {
  * @returns {Promise<string>}
  */
 const getCadenceCode = async ({ name, type }: IInteraction): Promise<string> => {
-  const path = await getPath(name, type)
+  const cadence = await getCadenceFile(name, type)
   const addressMap = getAddressMap()
-  return getTemplate(readFile(path), addressMap)
+  return getTemplate(cadence, addressMap)
 }
 
 export const transact = async (props: ITransactProps): Promise<fcl.CadenceResult> => {
