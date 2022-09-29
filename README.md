@@ -10,17 +10,37 @@
 
 <br>
 
-### Installation
+## Installation
 
 ```bash
 npm i -D @samatech/onflow-ts
 ```
 
-### Usage
+## Usage
 
-Coming soon...
+### Configuration
 
-### Development
+**BASE_PATH**
+
+_Required_
+
+Directory where the app's Cadence files are located
+
+**CDC_DIRECTORIES**
+
+Subdirectories containing Cadence contracts, transactions, and scripts.
+
+Default
+
+```ts
+{
+  'CONTRACT': './contracts/',
+  'TRANSACTION': './transactions/',
+  'SCRIPT': './scripts/',
+}
+```
+
+## Development
 
 #### Install packages with [PNPM](https://pnpm.io/installation)
 

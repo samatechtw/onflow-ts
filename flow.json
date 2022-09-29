@@ -15,6 +15,16 @@
     "emulator-account": {
       "address": "f8d6e0586b0a20c7",
       "key": "76189e4c21d67b42cd7bd1e61b3d05142cdde6e8cea08c639e90405b3e714551"
+    },
+    "emulator-account-eve": {
+      "address": "01cf0e2f2f715450",
+      "key": "ab2a2c0123d720e036b8809a8a930bc16ab9dedc534a57872445092fecd139f4",
+      "pubKey": "63dac8d89eb749075b226945af0f4ca35427fba5d0caeb89512ad4c05fce8c439e5a59e13bff6e70703ccbcafcbc4f4abe384c7dacc47ec6a2bba30f29421eda"
+    },
+    "emulator-account-frank": {
+      "address": "179b6b1cb6755e31",
+      "key": "588a3a399697341286ff2080099405d06e1c9cf237ca23bb8e547b65f99208e1",
+      "pubKey": "02c60a253f4f14dd2ccf7630448d82a13e527738431797efdfad50a54be1c8023c48e309d67273e713a1cd3305f1c391a6f816b264ee5cdfdb3cb5aa48b02f38"
     }
   },
   "deployments": {}

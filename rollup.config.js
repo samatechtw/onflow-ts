@@ -1,6 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 import commonjs from '@rollup/plugin-commonjs'
 import builtins from 'rollup-plugin-node-builtins'
+import copy from 'rollup-plugin-copy'
 import json from '@rollup/plugin-json'
 import nodePolyfills from 'rollup-plugin-polyfill-node'
 
@@ -17,11 +19,17 @@ export default [
       },
     ],
     plugins: [
+      replace({
+        "import require$$0 from 'buffer'": "import * as require$$0 from 'buffer'",
+        delimiters: ['', ''],
+        preventAssignment: true,
+      }),
       resolve({ browser: true, preferBuiltins: false }),
       json(),
       commonjs(),
       builtins(),
       nodePolyfills({ include: null }),
+      copy({ targets: [{ src: 'lib/cadence/*', dest: 'dist/cadence' }] }),
     ],
     // Ignore warnings from third party modules
     onwarn: (warning, warn) => {
