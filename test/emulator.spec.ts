@@ -2,7 +2,6 @@ import 'isomorphic-fetch'
 import { config } from '@onflow/config'
 import { afterAll, beforeAll, beforeEach, describe, it, jest } from '@jest/globals'
 import {
-  AccountManager,
   emulator,
   logFilter,
   getFlowBalance,
@@ -11,6 +10,7 @@ import {
   testSetup,
   transferFlowCdc,
 } from '../lib'
+import { AccountManager } from '../lib/node/test'
 
 jest.setTimeout(5000)
 
