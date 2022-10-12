@@ -9,8 +9,8 @@ import {
   mintFlow,
   testSetup,
   transferFlowCdc,
+  AccountManager,
 } from '../lib'
-import { AccountManager } from '../lib/node/test'
 
 jest.setTimeout(5000)
 

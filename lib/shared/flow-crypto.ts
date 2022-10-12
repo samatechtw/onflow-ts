@@ -7,7 +7,7 @@ import {
   FclAuthorization,
   sansPrefix,
   SigningData,
-  TransactionSignature,
+  CompositeSignature,
 } from '@onflow/fcl'
 import { withPrefix } from '../shared/misc'
 import { IFlowAccount } from '../type/i-flow-account'
@@ -44,7 +44,7 @@ export const authorization = (flowAccount: IFlowAccount): FclAuthorization => {
 
     const addr = sansPrefix(flowAccount.address)
 
-    const signingFunction = (data: SigningData): TransactionSignature => {
+    const signingFunction = (data: SigningData): CompositeSignature => {
       return {
         keyId,
         addr: withPrefix(addr) || '',

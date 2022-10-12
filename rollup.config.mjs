@@ -5,8 +5,7 @@ import builtins from 'rollup-plugin-node-builtins'
 import copy from 'rollup-plugin-copy'
 import json from '@rollup/plugin-json'
 import nodePolyfills from 'rollup-plugin-polyfill-node'
-
-const pkg = require('./package.json')
+import pkg from './package.json' assert { type: 'json' }
 
 export default [
   {

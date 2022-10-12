@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.2.2
         with:
-          version: 7.2.1
+          version: 7.13.4
       - name: Set up NodeJS v16
         uses: actions/setup-node@v3
         with:
@@ -39,7 +39,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.2.2
         with:
-          version: 7.2.1
+          version: 7.13.4
       - name: Set up NodeJS v16
         uses: actions/setup-node@v3
         with:
@@ -54,7 +54,7 @@ jobs:
     name: Unit Tests
     runs-on: ubuntu-20.04
     env:
-      FLOW_CLI_VER: v0.35.0
+      FLOW_CLI_VER: v0.41.0
     steps:
       - name: Checkout code into workspace directory
         uses: actions/checkout@v3
@@ -62,7 +62,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.2.2
         with:
-          version: 7.2.1
+          version: 7.13.4
       - name: Set up NodeJS v16
         uses: actions/setup-node@v3
         with:
@@ -87,7 +87,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2.2.2
         with:
-          version: 7.2.1
+          version: 7.13.4
       - name: Set up NodeJS v16
         uses: actions/setup-node@v3
         with:
