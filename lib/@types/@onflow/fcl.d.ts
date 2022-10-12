@@ -94,7 +94,7 @@ declare module '@onflow/fcl' {
     [key: string]: AnyJson
   }
 
-  export interface TransactionSignature {
+  export interface CompositeSignature {
     keyId: number
     addr: string
     signature: string
@@ -116,7 +116,7 @@ declare module '@onflow/fcl' {
     tempId: string
     addr: string
     keyId: number
-    signingFunction: (data: SigningData) => TransactionSignature
+    signingFunction: (data: SigningData) => CompositeSignature
   }
 
   export type FclAuthorization =
@@ -246,7 +246,7 @@ declare module '@onflow/fcl' {
 
   export interface CollectionGuaranteeObject {
     collectionId: string
-    signatures: TransactionSignature[]
+    signatures: CompositeSignature[]
   }
 
   export interface BlockObject {
@@ -256,7 +256,7 @@ declare module '@onflow/fcl' {
     timestamp: any
     collectionGuarantees: CollectionGuaranteeObject
     blockSeals: any
-    signatures: TransactionSignature[]
+    signatures: CompositeSignature[]
   }
 
   export function send(args: any, opts?: any): Promise<Response>
@@ -279,7 +279,7 @@ declare module '@onflow/fcl' {
   export function authorization(account: Account): Promise<FclAuthorization>
   export function verifyUserSignatures(
     msg: string,
-    compSigs: [TransactionSignature],
+    compSigs: [CompositeSignature],
   ): Promise<[unknown]>
 
   type SubscribeCallback = (user: UserSnapshot) => void
@@ -288,10 +288,32 @@ declare module '@onflow/fcl' {
     authenticate: typeof authenticate
     unauthenticate: typeof unauthenticate
     authorization: typeof authorization
-    signUserMessage: (msg: string) => Promise<[TransactionSignature]>
+    signUserMessage: (message: string) => Promise<CompositeSignature[]>
     subscribe: (callback: SubscribeCallback) => void
     snapshot: Promise<UserSnapshot>
     resolveArgument: () => Promise<Argument>
+  }
+
+  export interface AccountProofData {
+    address: string
+    nonce: string
+    signatures: CompositeSignature[]
+  }
+
+  export interface VerifyAccountProofOptions {
+    fclCryptoContract: boolean
+  }
+
+  export interface AppUtils {
+    verifyUserSignatures(
+      message: string,
+      compositeSignatures: CompositeSignature[],
+    ): Promise<boolean>
+    verifyAccountProof(
+      appIdentifier: string,
+      accountProofData: AccountProofData,
+      opts?: VerifyAccountProofOptions,
+    ): Promise<boolean>
   }
 
   export function currentUser(): CurrentUser
