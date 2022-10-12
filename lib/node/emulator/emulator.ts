@@ -1,7 +1,7 @@
 import { ChildProcess, spawn } from 'child_process'
 import { build, decode, getBlock, send } from '@onflow/fcl'
-import { config } from '@onflow/config'
 
+const DEFAULT_HOST = '127.0.0.1'
 const DEFAULT_HTTP_PORT = 7000
 const DEFAULT_REST_PORT = 8888
 const DEFAULT_GRPC_PORT = 3569
@@ -15,6 +15,7 @@ export interface EmulatorOptions {
 }
 
 export interface EmulatorStartOptions {
+  host?: string
   grpcPort?: number
   adminPort?: number
   restPort?: number
@@ -69,15 +70,17 @@ export class Emulator {
     const admin = options?.adminPort ?? DEFAULT_HTTP_PORT
     const rest = options?.restPort ?? DEFAULT_REST_PORT
     const grpc = options?.grpcPort ?? DEFAULT_GRPC_PORT
+    const host = options?.host ?? DEFAULT_HOST
 
     this.process = spawn('flow', [
       'emulator',
       '-v',
-      // '--grpc-debug',
       '--admin-port',
       admin.toString(),
       '--rest-port',
       rest.toString(),
+      '--host',
+      host,
       '--port',
       grpc.toString(),
     ])
