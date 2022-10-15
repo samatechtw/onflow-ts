@@ -304,7 +304,7 @@ declare module '@onflow/fcl' {
     fclCryptoContract: boolean
   }
 
-  export interface AppUtils {
+  export interface IAppUtils {
     verifyUserSignatures(
       message: string,
       compositeSignatures: CompositeSignature[],
@@ -315,6 +315,7 @@ declare module '@onflow/fcl' {
       opts?: VerifyAccountProofOptions,
     ): Promise<boolean>
   }
+  export const AppUtils: IAppUtils
 
   export function currentUser(): CurrentUser
 
