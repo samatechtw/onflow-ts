@@ -15,6 +15,7 @@ export const testSetup = async (options: EmulatorStartOptions) => {
     adminPort: 6999,
     grpcPort,
     restPort,
+    host: options.host,
   })
   console.log(`Emulator started: restPort=${restPort}, grpcPort=${grpcPort}`)
   return emulator
