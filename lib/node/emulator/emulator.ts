@@ -21,6 +21,7 @@ export interface EmulatorStartOptions {
   restPort?: number
   accessNode?: string
   basePath?: string
+  skipStart?: boolean
 }
 
 /** Class representing emulator */

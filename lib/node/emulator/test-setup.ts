@@ -11,6 +11,9 @@ export const testSetup = async (options: EmulatorStartOptions) => {
   config().put('accessNode.api', options.accessNode ?? `http://localhost:${port}`)
   const restPort = options.restPort || 8888
   const grpcPort = options.grpcPort || 3569
+  if (options.skipStart) {
+    return emulator
+  }
   await emulator.start({
     adminPort: 6999,
     grpcPort,
