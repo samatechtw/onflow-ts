@@ -14,13 +14,13 @@ import { IFlowAccount } from '../type/i-flow-account'
 
 const ec = new EC('p256')
 
-const hashMsgHex = (msgHex: string) => {
+export const hashMsgHex = (msgHex: string) => {
   const sha = new SHA3(256)
   sha.update(Buffer.from(msgHex, 'hex'))
   return sha.digest()
 }
 
-const signWithKey = (privateKey: string, msgHex: string) => {
+export const signWithKey = (privateKey: string, msgHex: string) => {
   const key = ec.keyFromPrivate(Buffer.from(privateKey, 'hex'))
   const sig = key.sign(hashMsgHex(msgHex))
   const n = 32 // half of signature length?
