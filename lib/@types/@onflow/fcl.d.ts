@@ -85,8 +85,8 @@ declare module '@onflow/types' {
 declare module '@onflow/fcl' {
   import { FlowConfig } from 'config.d'
   import { TransactionStatus } from 'enum-transaction-status'
-
   export { TransactionStatus }
+  import { IFclTransaction } from './wallet'
 
   export type AnyJson = boolean | number | string | null | IJsonArray | IJsonObject
 
@@ -316,6 +316,11 @@ declare module '@onflow/fcl' {
     ): Promise<boolean>
   }
   export const AppUtils: IAppUtils
+
+  export interface IWalletUtils {
+    encodeMessageFromSignable(signable: IFclTransaction, signerAddress: string): string
+  }
+  export const WalletUtils: IWalletUtils
 
   export function currentUser(): CurrentUser
 

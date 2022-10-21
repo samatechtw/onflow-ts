@@ -16,3 +16,5 @@ export * from './node/flow'
 export * from './node/fusd'
 export * from './node/emulator'
 export * from './node/util'
+
+export * from './wallet'
