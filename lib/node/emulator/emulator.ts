@@ -1,5 +1,5 @@
-import { ChildProcess, spawn } from 'child_process'
 import { build, decode, getBlock, send } from '@onflow/fcl'
+import { ChildProcess, spawn } from 'child_process'
 
 const DEFAULT_HOST = '127.0.0.1'
 const DEFAULT_HTTP_PORT = 7000
@@ -125,6 +125,14 @@ export class Emulator {
         this.process?.kill()
       })
 
+      this.process?.on('error', (data) => {
+        clearInterval(waitReadyTimeout)
+        this.log(`ERROR: ${data}`, true, 'error')
+        this.startFailed = true
+        this.process?.kill()
+        this.process = undefined
+      })
+
       this.process?.on('close', (code) => {
         if (this.startFailed) {
           clearInterval(waitReadyTimeout)
@@ -132,6 +140,11 @@ export class Emulator {
           this.process = undefined
           reject()
         }
+      })
+      this.process?.on('exit', (code) => {
+        this.process = undefined
+        this.log(`emulator exit with code ${code}`, true)
+        reject()
       })
     })
   }
