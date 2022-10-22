@@ -1,1 +1,6 @@
+export * from './i-fcl-identity'
 export * from './i-fcl-transaction'
+export * from './i-composite-signature'
+export * from './fcl-request-status'
+export * from './fcl-service-method'
+export * from './fcl-service-type'
