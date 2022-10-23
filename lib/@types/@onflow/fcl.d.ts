@@ -297,12 +297,12 @@ declare module '@onflow/fcl' {
       accountProofData: AccountProofData,
       opts?: VerifyAccountProofOptions,
     ): Promise<boolean>
-    encodeAccountProof(appIdentifier: string, address: string, nonce: string): string
   }
   export const AppUtils: IAppUtils
 
   export interface IWalletUtils {
     encodeMessageFromSignable(signable: IFclTransaction, signerAddress: string): string
+    encodeAccountProof(appIdentifier: string, address: string, nonce: string): string
   }
   export const WalletUtils: IWalletUtils
 
