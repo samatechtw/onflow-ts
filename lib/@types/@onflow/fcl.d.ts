@@ -301,7 +301,7 @@ declare module '@onflow/fcl' {
   }
 
   export interface VerifyAccountProofOptions {
-    fclCryptoContract: boolean
+    fclCryptoContract: string
   }
 
   export interface IAppUtils {
