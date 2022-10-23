@@ -300,9 +300,18 @@ declare module '@onflow/fcl' {
   }
   export const AppUtils: IAppUtils
 
+  interface IEncodeAccountProofParams {
+    appIdentifier: string
+    address: string
+    nonce: string
+  }
+
   export interface IWalletUtils {
     encodeMessageFromSignable(signable: IFclTransaction, signerAddress: string): string
-    encodeAccountProof(appIdentifier: string, address: string, nonce: string): string
+    encodeAccountProof(
+      params: IEncodeAccountProofParams,
+      includeDomainTag?: boolean,
+    ): string
   }
   export const WalletUtils: IWalletUtils
 
