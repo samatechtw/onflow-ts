@@ -86,18 +86,13 @@ declare module '@onflow/fcl' {
   import { FlowConfig } from 'config.d'
   import { TransactionStatus } from 'enum-transaction-status'
   export { TransactionStatus }
-  import { IFclTransaction } from './wallet'
+  import { IFclService } from '../../type'
+  import { IFclTransaction, ICompositeSignature } from '../../wallet'
 
   export type AnyJson = boolean | number | string | null | IJsonArray | IJsonObject
 
   export interface IJsonObject {
     [key: string]: AnyJson
-  }
-
-  export interface CompositeSignature {
-    keyId: number
-    addr: string
-    signature: string
   }
 
   export interface SigningData {
@@ -116,25 +111,13 @@ declare module '@onflow/fcl' {
     tempId: string
     addr: string
     keyId: number
-    signingFunction: (data: SigningData) => CompositeSignature
+    signingFunction: (data: SigningData) => ICompositeSignature
   }
 
   export type FclAuthorization =
     | AuthZ
     | ((acct: Account) => AuthZ)
     | ((acct: Account) => Promise<AuthZ>)
-
-  export interface Service {
-    authn?: string
-    f_type: string
-    f_vsn: string
-    id?: string
-    identity?: Record<string, string>
-    provider?: Record<string, string>
-    scoped?: Record<string, string>
-    type: string
-    uid: string
-  }
 
   export interface UserSnapshot {
     addr: string | null
@@ -143,7 +126,7 @@ declare module '@onflow/fcl' {
     f_type: string
     f_vsn: string
     loggedIn: boolean | null
-    services?: Service[]
+    services?: IFclService[]
   }
 
   export interface CadenceEvent {
@@ -246,7 +229,7 @@ declare module '@onflow/fcl' {
 
   export interface CollectionGuaranteeObject {
     collectionId: string
-    signatures: CompositeSignature[]
+    signatures: ICompositeSignature[]
   }
 
   export interface BlockObject {
@@ -256,7 +239,7 @@ declare module '@onflow/fcl' {
     timestamp: any
     collectionGuarantees: CollectionGuaranteeObject
     blockSeals: any
-    signatures: CompositeSignature[]
+    signatures: ICompositeSignature[]
   }
 
   export function send(args: any, opts?: any): Promise<Response>
@@ -279,7 +262,7 @@ declare module '@onflow/fcl' {
   export function authorization(account: Account): Promise<FclAuthorization>
   export function verifyUserSignatures(
     msg: string,
-    compSigs: [CompositeSignature],
+    compSigs: ICompositeSignature[],
   ): Promise<[unknown]>
 
   type SubscribeCallback = (user: UserSnapshot) => void
@@ -288,16 +271,16 @@ declare module '@onflow/fcl' {
     authenticate: typeof authenticate
     unauthenticate: typeof unauthenticate
     authorization: typeof authorization
-    signUserMessage: (message: string) => Promise<CompositeSignature[]>
+    signUserMessage: (message: string) => Promise<ICompositeSignature[]>
     subscribe: (callback: SubscribeCallback) => void
-    snapshot: Promise<UserSnapshot>
+    snapshot: () => UserSnapshot
     resolveArgument: () => Promise<Argument>
   }
 
   export interface AccountProofData {
     address: string
     nonce: string
-    signatures: CompositeSignature[]
+    signatures: ICompositeSignature[]
   }
 
   export interface VerifyAccountProofOptions {
@@ -307,13 +290,14 @@ declare module '@onflow/fcl' {
   export interface IAppUtils {
     verifyUserSignatures(
       message: string,
-      compositeSignatures: CompositeSignature[],
+      compositeSignatures: ICompositeSignature[],
     ): Promise<boolean>
     verifyAccountProof(
       appIdentifier: string,
       accountProofData: AccountProofData,
       opts?: VerifyAccountProofOptions,
     ): Promise<boolean>
+    encodeAccountProof(appIdentifier: string, address: string, nonce: string): string
   }
   export const AppUtils: IAppUtils
 
