@@ -7,7 +7,7 @@ import { toUFix64 } from '../shared/misc'
 /*
  * Deploys FUSD contract to the account
  * @param {IFlowAccount} account - the account to deploy the FUSD contract on
- * @throws If execution will be halted
+ * @throws If execution is halted
  * @returns {Promise<*>}
  * */
 export const deployFusd = async (account: IFlowAccount) => {
@@ -17,7 +17,7 @@ export const deployFusd = async (account: IFlowAccount) => {
 /*
  * Sets up FUSD vault and capabilities to receive FUSDs and check the balance
  * @param {IFlowAccount} account - the account to enable FUSDs on
- * @throws If execution will be halted
+ * @throws If execution is halted
  * @returns {Promise<*>}
  * */
 export const setupFusdOnAccountCdc = (account: IFlowAccount) => {
@@ -34,7 +34,7 @@ export const setupFusdOnAccountCdc = (account: IFlowAccount) => {
  * @param {IFlowAccount} admin - FUSD token admin
  * @param {IFlowAccount} recipient - the account to receive FUSD once minted
  * @param {UFix64} amount - amount of FUSD tokens to receive
- * @throws If execution will be halted
+ * @throws If execution is halted
  * @returns {Promise<*>}
  * */
 export const mintFusdToAccountCdc = async (
@@ -56,7 +56,7 @@ export const mintFusdToAccountCdc = async (
 /*
  * Retrieves the FUSD tokens balance on the account
  * @param {IFlowAccount} account - the account which balance to check
- * @throws If execution will be halted
+ * @throws If execution is halted
  * @returns {Promise<*>}
  * */
 export const getFusdBalanceCdc = async (account: IFlowAccount) => {
@@ -71,7 +71,7 @@ export const getFusdBalanceCdc = async (account: IFlowAccount) => {
  * @param {string} recipient - transfer recipient
  * @param {UFix64} amount - amount of FUSD tokens to transfer
  * @param {IFlowAccount} signer - transaction signer (or sender)
- * @throws If execution will be halted
+ * @throws If execution is halted
  * @returns {Promise<*>}
  * */
 export const transferFusdCdc = async (
