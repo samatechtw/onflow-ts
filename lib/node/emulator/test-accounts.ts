@@ -31,13 +31,6 @@ transaction(_ pubKey: String) {
 }
 `
 
-export const GET_KEY_CODE = `
-pub fun main(address: Address, index: Int): AccountKey? {
-    let account = getAccount(address)
-    return account.keys.get(keyIndex: index)
-}
-`
-
 export const formatPubKey = (
   pubKey: string,
   signatureAlgorithm = 2, // P256
@@ -58,6 +51,23 @@ export const pubFlowKey = async (privateKey: string): Promise<string> => {
   const keys = ec.keyFromPrivate(Buffer.from(privateKey), 'hex')
   const publicKey = keys.getPublic('hex').replace(/^04/, '')
   return formatPubKey(publicKey)
+}
+
+export const createKeyPair = () => {
+  const key = ec.genKeyPair()
+  return key
+}
+
+export const createFlowAccount = async (
+  auth: IFlowAccount,
+  publicKey: string,
+): Promise<void> => {
+  const args = [arg(formatPubKey(publicKey), t.String)]
+  await sendTransaction({
+    code: CREATE_ACCOUNT_CODE,
+    args,
+    auth: authorization(auth),
+  })
 }
 
 export class AccountManager {
@@ -84,13 +94,7 @@ export class AccountManager {
     if (!address || !privateKey || !publicKey) {
       throw new Error(`No address/key/pubKey found in ${path}`)
     }
-
-    const args = [arg(formatPubKey(publicKey), t.String)]
-    await sendTransaction({
-      code: CREATE_ACCOUNT_CODE,
-      args,
-      auth: authorization(auth),
-    })
+    await createFlowAccount(auth, publicKey)
 
     this.accounts[address] = {
       address,
