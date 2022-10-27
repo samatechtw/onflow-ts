@@ -55,7 +55,10 @@ export const pubFlowKey = async (privateKey: string): Promise<string> => {
 
 export const createKeyPair = () => {
   const key = ec.genKeyPair()
-  return key
+  return {
+    privateKey: key.getPrivate('hex'),
+    publicKey: key.getPublic('hex').replace(/^04/, ''),
+  }
 }
 
 export const createFlowAccount = async (
