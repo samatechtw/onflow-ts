@@ -1,6 +1,6 @@
 import * as rlp from 'rlp'
 import * as t from '@onflow/types'
-import { arg } from '@onflow/fcl'
+import { arg, CadenceResult } from '@onflow/fcl'
 import { flowConfig } from '@onflow/fcl-config'
 import { ec as EC } from 'elliptic'
 import { AnyJson } from '@onflow/fcl'
@@ -64,9 +64,9 @@ export const createKeyPair = () => {
 export const createFlowAccount = async (
   auth: IFlowAccount,
   publicKey: string,
-): Promise<void> => {
+): Promise<CadenceResult> => {
   const args = [arg(formatPubKey(publicKey), t.String)]
-  await sendTransaction({
+  return await sendTransaction({
     code: CREATE_ACCOUNT_CODE,
     args,
     auth: authorization(auth),
