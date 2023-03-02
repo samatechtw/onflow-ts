@@ -8,7 +8,7 @@ import { getAddressMap } from '../shared/config'
 import { withPrefix } from '../shared/misc'
 import { InteractionType, IDeployProps, IInteraction, ITransactProps } from '../type'
 import { executeScript, sendTransaction, deployContract } from '../shared/interactions'
-import { authorization, authorizationMaybe } from '../shared/flow-crypto'
+import { authorization, authorizationMaybe } from './util/flow-crypto'
 
 export const defaultCdcDirectories = {
   [InteractionType.CONTRACT]: './contracts/',

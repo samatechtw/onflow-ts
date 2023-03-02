@@ -8,7 +8,7 @@ import { IFlowAccount } from '../../type'
 import { fromHex, toHex, withPrefix } from '../../shared/misc'
 import { flowConfigGet } from '../../shared/config'
 import { sendTransaction } from '../../shared/interactions'
-import { authorization } from '../../shared/flow-crypto'
+import { authorization } from '../util/flow-crypto'
 
 const ec = new EC('p256')
 
