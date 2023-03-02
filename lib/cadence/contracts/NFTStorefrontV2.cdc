@@ -776,3 +776,4 @@ pub contract NFTStorefrontV2 {
         self.StorefrontPublicPath = /public/NFTStorefrontV2
     }
 }
+ 
