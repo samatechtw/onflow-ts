@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "clean": "rm -rf dist/* && rm -rf out-tsc/*",
-    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json && cp out-tsc/esm/index.d.ts dist/esm/ && cp -rf lib/@types dist/",
+    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json && cp out-tsc/esm/index.d.ts dist/esm/ && cp -rf lib/@types dist/ && cp -rf lib/cadence dist/",
     "test": "jest -c=jest.config.ts --runInBand",
     "lint": "eslint --ext .js,.ts .",
     "format": "prettier -w \"{**/*,*}.{ts,js,json}\"",
