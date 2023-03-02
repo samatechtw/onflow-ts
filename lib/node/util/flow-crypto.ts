@@ -2,9 +2,9 @@ import { Buffer } from 'buffer'
 import { ec as EC } from 'elliptic'
 import { SHA3 } from 'sha3'
 import { Account, AuthZ, FclAuthorization, sansPrefix, SigningData } from '@onflow/fcl'
-import { withPrefix } from '../shared/misc'
-import { IFlowAccount } from '../type/i-flow-account'
-import { ICompositeSignature } from '../wallet'
+import { withPrefix } from '../../shared/misc'
+import { IFlowAccount } from '../../type/i-flow-account'
+import { ICompositeSignature } from '../../wallet'
 
 const ec = new EC('p256')
 

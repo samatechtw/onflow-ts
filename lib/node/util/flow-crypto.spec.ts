@@ -1,6 +1,6 @@
 import { Account, AuthZ, sansPrefix } from '@onflow/fcl'
 import { authorization, authorizationMaybe } from './flow-crypto'
-import { IFlowAccount } from '../type/i-flow-account'
+import { IFlowAccount } from '../../type/i-flow-account'
 
 describe('shared/flow-crypto', () => {
   describe('authorization', () => {
